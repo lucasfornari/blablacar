@@ -1,7 +1,9 @@
 package application.usecase;
 
-import application.output.*;
-import application.repository.*;
+import application.output.RelatorioGeralOutput;
+import application.output.RelatorioMotoristaOutput;
+import application.output.RelatorioPassageiroOutput;
+import application.repository.RelatorioRepository;
 
 public class RelatorioUseCase {
     private RelatorioRepository relatorioRepo = new RelatorioRepository();
