@@ -141,8 +141,9 @@ public class BancoDeDados {
             try {
                 if (stmt != null) {
                     stmt.close();
-            
-                }} catch (SQLException e) {
+
+                }
+            } catch (SQLException e) {
             }
             fechar(conn);
         }

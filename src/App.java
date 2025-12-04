@@ -1,15 +1,30 @@
-import application.input.*;
-import application.output.*;
-import application.usecase.*;
-import infrastructure.BancoDeDados;
-
 import java.util.List;
 import java.util.Scanner;
+
+import application.input.AdicionarVeiculoInput;
+import application.input.AvaliarViagemInput;
+import application.input.BuscarViagensInput;
+import application.input.CriarUsuarioInput;
+import application.input.CriarViagemInput;
+import application.input.FinalizarViagemInput;
+import application.input.LoginInput;
+import application.input.RegistrarMotoristaInput;
+import application.input.ReservarViagemInput;
+import application.output.RelatorioGeralOutput;
+import application.output.RelatorioMotoristaOutput;
+import application.output.RelatorioPassageiroOutput;
+import application.output.UsuarioOutput;
+import application.output.VeiculoOutput;
+import application.output.ViagemOutput;
+import application.usecase.RelatorioUseCase;
+import application.usecase.UsuarioUseCase;
+import application.usecase.VeiculoUseCase;
+import application.usecase.ViagemUseCase;
+import infrastructure.BancoDeDados;
 
 public class App {
     private static Scanner scanner = new Scanner(System.in);
     private static UsuarioOutput usuarioLogado = null;
-
     private static UsuarioUseCase usuarioUC = new UsuarioUseCase();
     private static VeiculoUseCase veiculoUC = new VeiculoUseCase();
     private static ViagemUseCase viagemUC = new ViagemUseCase();

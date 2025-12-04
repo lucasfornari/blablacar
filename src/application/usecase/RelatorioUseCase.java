@@ -6,6 +6,7 @@ import application.output.RelatorioPassageiroOutput;
 import application.repository.RelatorioRepository;
 
 public class RelatorioUseCase {
+
     private RelatorioRepository relatorioRepo = new RelatorioRepository();
 
     public RelatorioMotoristaOutput relatorioMotorista(int motoristaId, String nome) {
