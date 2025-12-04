@@ -1,8 +1,15 @@
 package application.repository;
 
-import application.output.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import application.output.RelatorioGeralOutput;
+import application.output.RelatorioMotoristaOutput;
+import application.output.RelatorioPassageiroOutput;
 import infrastructure.BancoDeDados;
-import java.sql.*;
 
 public class RelatorioRepository {
 
@@ -21,35 +28,30 @@ public class RelatorioRepository {
             conn = BancoDeDados.conectar();
             if (conn == null) return null;
 
-            // Total de viagens
             stmt = conn.prepareStatement("SELECT COUNT(*) as total FROM viagens WHERE motorista_id = ?");
             stmt.setInt(1, motoristaId);
             rs = stmt.executeQuery();
             if (rs.next()) totalViagens = rs.getInt("total");
             rs.close(); stmt.close();
 
-            // Finalizadas
             stmt = conn.prepareStatement("SELECT COUNT(*) as total FROM viagens WHERE motorista_id = ? AND status = 'FINALIZADA'");
             stmt.setInt(1, motoristaId);
             rs = stmt.executeQuery();
             if (rs.next()) finalizadas = rs.getInt("total");
             rs.close(); stmt.close();
 
-            // Canceladas
             stmt = conn.prepareStatement("SELECT COUNT(*) as total FROM viagens WHERE motorista_id = ? AND status = 'CANCELADA'");
             stmt.setInt(1, motoristaId);
             rs = stmt.executeQuery();
             if (rs.next()) canceladas = rs.getInt("total");
             rs.close(); stmt.close();
 
-            // Media avaliacao
             stmt = conn.prepareStatement("SELECT AVG(avaliacao) as media FROM viagens WHERE motorista_id = ? AND avaliacao > 0");
             stmt.setInt(1, motoristaId);
             rs = stmt.executeQuery();
             if (rs.next()) mediaAvaliacao = rs.getDouble("media");
             rs.close(); stmt.close();
 
-            // Total faturado
             stmt = conn.prepareStatement("""
                 SELECT COALESCE(SUM(v.preco * pv.numero_lugares), 0) as total
                 FROM viagens v
@@ -82,21 +84,18 @@ public class RelatorioRepository {
             conn = BancoDeDados.conectar();
             if (conn == null) return null;
 
-            // Total de viagens
             stmt = conn.prepareStatement("SELECT COUNT(*) as total FROM passageiros_viagens WHERE passageiro_id = ?");
             stmt.setInt(1, passageiroId);
             rs = stmt.executeQuery();
             if (rs.next()) totalViagens = rs.getInt("total");
             rs.close(); stmt.close();
 
-            // Avaliacoes feitas
             stmt = conn.prepareStatement("SELECT COUNT(*) as total FROM passageiros_viagens WHERE passageiro_id = ? AND avaliacao > 0");
             stmt.setInt(1, passageiroId);
             rs = stmt.executeQuery();
             if (rs.next()) avaliacoesFeitas = rs.getInt("total");
             rs.close(); stmt.close();
 
-            // Total gasto
             stmt = conn.prepareStatement("""
                 SELECT COALESCE(SUM(v.preco * pv.numero_lugares), 0) as total
                 FROM viagens v
