@@ -1,18 +1,13 @@
 package application.input;
 
 public class AvaliarViagemInput {
-    private int viagemId;
-    private double nota;
+    public int viagemId;
+    public int passageiroId;
+    public int nota;
 
-    public AvaliarViagemInput(int viagemId, double nota) {
+    public AvaliarViagemInput(int viagemId, int passageiroId, int nota) {
         this.viagemId = viagemId;
+        this.passageiroId = passageiroId;
         this.nota = nota;
-    }
-
-    public int getViagemId() { return viagemId; }
-    public double getNota() { return nota; }
-
-    public boolean isValido() {
-        return viagemId > 0 && nota >= 0 && nota <= 5;
     }
 }
