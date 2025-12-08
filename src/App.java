@@ -40,9 +40,15 @@ public class App {
             System.out.println("ERRO: Sem conexao com banco!");
         }
         
-        System.out.println("\n========================================");
-        System.out.println("         BLABLACAR - CARONAS");
-        System.out.println("========================================");
+       
+        System.out.println("\n\t╔═══════════════════════════════════════════════════╗");
+        System.out.println("\t║                                                   ║");
+        System.out.println("\t║          SISTEMA DE CARONAS - CaronaApp           ║");
+        System.out.println("\t║                                                   ║");
+        System.out.println("\t║          Compartilhe viagens, economize!          ║");
+        System.out.println("\t║                                                   ║");
+        System.out.println("\t╚═══════════════════════════════════════════════════╝\n");
+    
 
         while (true) {
             if (usuarioLogado == null) menuInicial();
@@ -51,12 +57,15 @@ public class App {
     }
 
     private static void menuInicial() {
-        System.out.println("\n--- MENU ---");
-        System.out.println("1. Login");
-        System.out.println("2. Criar Conta");
-        System.out.println("3. Buscar Caronas");
-        System.out.println("0. Sair");
-        System.out.print("Opcao: ");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│         MENU INICIAL                │");
+        System.out.println("\t└─────────────────────────────────────┘");
+        System.out.println("\t│ 1. Fazer Login                      │");
+        System.out.println("\t│ 2. Criar Conta                      │");
+        System.out.println("\t│ 3. Buscar Caronas (Visitante)       │");
+        System.out.println("\t│ 0. Sair                             │");
+        System.out.println("\t└─────────────────────────────────────┘");
+        System.out.print("\nEscolha uma opção: ");
 
         switch (lerInt()) {
             case 1 -> login();
@@ -67,20 +76,27 @@ public class App {
     }
 
     private static void menuPrincipal() {
-        System.out.println("\n--- MENU [" + usuarioLogado.nome + "] ---");
-        System.out.println("1. Ofertar Carona");
-        System.out.println("2. Buscar Caronas");
-        System.out.println("3. Minhas Caronas (Motorista)");
-        System.out.println("4. Minhas Viagens (Passageiro)");
-        System.out.println("5. Finalizar Viagem");
-        System.out.println("6. Avaliar Viagem");
-        System.out.println("7. Cadastrar Veiculo");
-        System.out.println("8. Meus Veiculos");
-        System.out.println("9. Relatorios");
-        System.out.println("10. Meu Perfil");
-        System.out.println("11. Logout");
-        System.out.println("0. Sair");
-        System.out.print("Opcao: ");
+        System.out.println("\n\t╔═══════════════════════════════════════════════════╗");
+        System.out.println("\t║  Bem-vindo(a), " + usuarioLogado.nome + "! ");
+        System.out.println("\t╚═══════════════════════════════════════════════════╝");
+
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│         MENU PRINCIPAL              │");
+        System.out.println("\t├─────────────────────────────────────┤");
+        System.out.println("\t│   1. Ofertar Carona                 │");
+        System.out.println("\t│   2. Buscar Caronas                 │");
+        System.out.println("\t│   3. Minhas Caronas (Motorista)     │");
+        System.out.println("\t│   4. Minhas Viagens (Passageiro)    │");
+        System.out.println("\t│   5. Finalizar Viagem               │");
+        System.out.println("\t│   6. Avaliar Viagem                 │");
+        System.out.println("\t│   7. Cadastrar Veiculo              │");
+        System.out.println("\t│   8. Meus Veiculos                  │");
+        System.out.println("\t│   9. Relatorios                     │");
+        System.out.println("\t│   10.Meu Perfil                     │");
+        System.out.println("\t│   11.Fazer Logout                   │");
+        System.out.println("\t│   0. Sair do Sistema                │");
+        System.out.println("\t└─────────────────────────────────────┘");
+        System.out.print("\nEscolha uma opção: ");
 
         switch (lerInt()) {
             case 1 -> ofertarCarona();
@@ -99,7 +115,9 @@ public class App {
     }
 
     private static void login() {
-        System.out.println("\n--- LOGIN --- (Enter para voltar)");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│           FAZER LOGIN               │");
+        System.out.println("\t└─────────────────────────────────────┘");
         System.out.print("Email: ");
         String email = scanner.nextLine();
         if (email.isEmpty()) return;
@@ -117,7 +135,9 @@ public class App {
     }
 
     private static void criarConta() {
-        System.out.println("\n--- CRIAR CONTA --- (Enter para voltar)");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│          CRIAR NOVA CONTA           │");
+        System.out.println("\t└─────────────────────────────────────┘");        
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
         if (nome.isEmpty()) return;
@@ -142,8 +162,9 @@ public class App {
     }
 
     private static void ofertarCarona() {
-        System.out.println("\n--- OFERTAR CARONA --- (Enter para voltar)");
-        
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│        OFERTAR NOVA CARONA          │");
+        System.out.println("\t└─────────────────────────────────────┘");        
         int motoristaId = usuarioUC.buscarMotoristaId(usuarioLogado.id);
         if (motoristaId == 0) {
             System.out.print("Voce nao e motorista. Cadastrar? (S/N): ");
@@ -191,7 +212,9 @@ public class App {
     }
 
     private static void buscarCaronas() {
-        System.out.println("\n--- BUSCAR CARONAS --- (Enter para voltar)");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│      BUSCAR CARONAS                 │");
+        System.out.println("\t└─────────────────────────────────────┘");    
         System.out.print("Origem: ");
         String origem = scanner.nextLine();
         if (origem.isEmpty()) return;
@@ -204,7 +227,9 @@ public class App {
         List<ViagemOutput> viagens = viagemUC.buscar(new BuscarViagensInput(origem, destino, data.isEmpty() ? null : data));
         if (viagens.isEmpty()) { System.out.println("Nenhuma carona."); return; }
 
-        System.out.println("\n--- CARONAS DISPONIVEIS ---");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│         CARONAS ENCONTRADAS         │");
+        System.out.println("\t└─────────────────────────────────────┘");
         for (ViagemOutput v : viagens) {
             System.out.println("ID:" + v.id + " | " + v.cidadeOrigem + " -> " + v.cidadeDestino +
                 " | " + v.dataViagem + " | Vagas:" + v.vagasDisponiveis + "/" + v.vagas +
@@ -241,7 +266,9 @@ public class App {
         List<ViagemOutput> viagens = viagemUC.listarPorMotorista(motoristaId);
         if (viagens.isEmpty()) { System.out.println("Nenhuma carona."); return; }
 
-        System.out.println("\n--- MINHAS CARONAS (MOTORISTA) ---");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│      MINHAS CARONAS (MOTORISTA)     │");
+        System.out.println("\t└─────────────────────────────────────┘");
         for (ViagemOutput v : viagens) {
             System.out.println("ID:" + v.id + " | " + v.cidadeOrigem + " -> " + v.cidadeDestino +
                 " | " + v.dataViagem + " | " + v.status + 
@@ -256,7 +283,9 @@ public class App {
         List<ViagemOutput> viagens = viagemUC.listarPorPassageiro(passageiroId);
         if (viagens.isEmpty()) { System.out.println("Nenhuma viagem."); return; }
 
-        System.out.println("\n--- MINHAS VIAGENS (PASSAGEIRO) ---");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│       MINHAS VIAGENS (PASSAGEIRO)   │");
+        System.out.println("\t└─────────────────────────────────────┘");       
         for (ViagemOutput v : viagens) {
             String avaliacao = v.minhaAvaliacao > 0 ? " | Avaliacao:" + v.minhaAvaliacao + "/5" : " | Nao avaliada";
             System.out.println("ID:" + v.id + " | " + v.cidadeOrigem + " -> " + v.cidadeDestino +
@@ -275,7 +304,9 @@ public class App {
 
         if (pendentes.isEmpty()) { System.out.println("Nenhuma viagem para finalizar."); return; }
 
-        System.out.println("\n--- FINALIZAR VIAGEM ---");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│       FINALIZAR VIAGEM              │");
+        System.out.println("\t└─────────────────────────────────────┘");
         for (ViagemOutput v : pendentes) {
             System.out.println("ID:" + v.id + " | " + v.cidadeOrigem + " -> " + v.cidadeDestino +
                 " | " + v.dataViagem + " | " + v.status);
@@ -300,7 +331,9 @@ public class App {
 
         if (finalizadas.isEmpty()) { System.out.println("Nenhuma viagem para avaliar."); return; }
 
-        System.out.println("\n--- AVALIAR VIAGEM ---");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│         AVALIAR CARONA              │");
+        System.out.println("\t└─────────────────────────────────────┘");        
         for (ViagemOutput v : finalizadas) {
             System.out.println("ID:" + v.id + " | " + v.cidadeOrigem + " -> " + v.cidadeDestino +
                 " | " + v.dataViagem + " | Motorista: " + v.nomeMotorista);
@@ -318,7 +351,10 @@ public class App {
     }
 
     private static void menuRelatorios() {
-        System.out.println("\n--- RELATORIOS ---");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│            RELATORIOS               │");
+        System.out.println("\t└─────────────────────────────────────┘");        
+        
         System.out.println("1. Meu Relatorio (Motorista)");
         System.out.println("2. Meu Relatorio (Passageiro)");
         System.out.println("3. Relatorio Geral do Sistema");
@@ -339,16 +375,16 @@ public class App {
         RelatorioMotoristaOutput r = relatorioUC.relatorioMotorista(motoristaId, usuarioLogado.nome);
         if (r == null) { System.out.println("Erro ao gerar relatorio."); return; }
 
-        System.out.println("\n========================================");
-        System.out.println("      RELATORIO DO MOTORISTA");
-        System.out.println("========================================");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│     RELATORIOS DO MOTORISTA         │");
+        System.out.println("\t└─────────────────────────────────────┘");
         System.out.println("Nome: " + r.nome);
         System.out.println("Total de Viagens: " + r.totalViagens);
         System.out.println("Viagens Finalizadas: " + r.viagensFinalizadas);
         System.out.println("Viagens Canceladas: " + r.viagensCanceladas);
         System.out.println("Media de Avaliacao: " + String.format("%.1f", r.mediaAvaliacao) + "/5");
         System.out.println("Total Faturado: R$ " + String.format("%.2f", r.totalFaturado));
-        System.out.println("========================================");
+        System.out.println("════════════════════════════════════════");
     }
 
     private static void relatorioPassageiro() {
@@ -358,33 +394,33 @@ public class App {
         RelatorioPassageiroOutput r = relatorioUC.relatorioPassageiro(passageiroId, usuarioLogado.nome);
         if (r == null) { System.out.println("Erro ao gerar relatorio."); return; }
 
-        System.out.println("\n========================================");
-        System.out.println("      RELATORIO DO PASSAGEIRO");
-        System.out.println("========================================");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│     RELATORIOS DO PASSAGEIRO        │");
+        System.out.println("\t└─────────────────────────────────────┘");
         System.out.println("Nome: " + r.nome);
         System.out.println("Total de Viagens: " + r.totalViagens);
         System.out.println("Avaliacoes Feitas: " + r.avaliacoesFeitas);
         System.out.println("Total Gasto: R$ " + String.format("%.2f", r.totalGasto));
-        System.out.println("========================================");
+        System.out.println("══════════════════════════════════════'");
     }
 
     private static void relatorioGeral() {
         RelatorioGeralOutput r = relatorioUC.relatorioGeral();
         if (r == null) { System.out.println("Erro ao gerar relatorio."); return; }
 
-        System.out.println("\n========================================");
-        System.out.println("      RELATORIO GERAL DO SISTEMA");
-        System.out.println("========================================");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│     RELATORIO GERAL DO SISTEMA      │");
+        System.out.println("\t└─────────────────────────────────────┘");
         System.out.println("Total de Usuarios: " + r.totalUsuarios);
         System.out.println("Total de Motoristas: " + r.totalMotoristas);
         System.out.println("Total de Passageiros: " + r.totalPassageiros);
-        System.out.println("----------------------------------------");
+        System.out.println("────────────────────────────────────────");
         System.out.println("Total de Viagens: " + r.totalViagens);
         System.out.println("Viagens Finalizadas: " + r.viagensFinalizadas);
         System.out.println("Viagens Pendentes: " + r.viagensPendentes);
-        System.out.println("----------------------------------------");
+        System.out.println("────────────────────────────────────────");
         System.out.println("Faturamento Total: R$ " + String.format("%.2f", r.faturamentoTotal));
-        System.out.println("========================================");
+        System.out.println("════════════════════════════════════════");
     }
 
     private static void cadastrarVeiculo() {
@@ -429,12 +465,16 @@ public class App {
         if (motoristaId == 0) { System.out.println("Voce nao e motorista."); return; }
         List<VeiculoOutput> veiculos = veiculoUC.listar(motoristaId);
         if (veiculos.isEmpty()) { System.out.println("Nenhum veiculo."); return; }
-        System.out.println("\n--- MEUS VEICULOS ---");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│          MEUS VEICULOS              │");
+        System.out.println("\t└─────────────────────────────────────┘");
         for (VeiculoOutput v : veiculos) System.out.println(v.id + " - " + v.getDescricao());
     }
 
     private static void meuPerfil() {
-        System.out.println("\n--- PERFIL ---");
+        System.out.println("\n\t┌─────────────────────────────────────┐");
+        System.out.println("\t│             MEU PERFIL              │");
+        System.out.println("\t└─────────────────────────────────────┘");
         System.out.println("Nome: " + usuarioLogado.nome);
         System.out.println("Email: " + usuarioLogado.email);
         System.out.println("Telefone: " + usuarioLogado.telefone);
