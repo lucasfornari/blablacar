@@ -21,7 +21,7 @@ CREATE TABLE motoristas (
     cnh VARCHAR(20) NOT NULL UNIQUE,
     numero_viagens INTEGER DEFAULT 0,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) 
 );
 
 CREATE TABLE passageiros (
@@ -29,7 +29,7 @@ CREATE TABLE passageiros (
     usuario_id INTEGER NOT NULL UNIQUE,
     numero_viagens INTEGER DEFAULT 0,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) 
 );
 
 CREATE TABLE veiculos (
@@ -41,7 +41,7 @@ CREATE TABLE veiculos (
     ano INTEGER NOT NULL,
     cor VARCHAR(50),
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (motorista_id) REFERENCES motoristas(id) ON DELETE CASCADE
+    FOREIGN KEY (motorista_id) REFERENCES motoristas(id) 
 );
 
 CREATE TABLE viagens (
@@ -59,7 +59,7 @@ CREATE TABLE viagens (
     total_avaliacoes INTEGER DEFAULT 0,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (veiculo_id) REFERENCES veiculos(id) ON DELETE CASCADE,
-    FOREIGN KEY (motorista_id) REFERENCES motoristas(id) ON DELETE CASCADE
+    FOREIGN KEY (motorista_id) REFERENCES motoristas(id) 
 );
 
 CREATE TABLE passageiros_viagens (
@@ -70,7 +70,7 @@ CREATE TABLE passageiros_viagens (
     status VARCHAR(20) DEFAULT 'RESERVADO',
     data_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (viagem_id) REFERENCES viagens(id) ON DELETE CASCADE,
-    FOREIGN KEY (passageiro_id) REFERENCES passageiros(id) ON DELETE CASCADE
+    FOREIGN KEY (passageiro_id) REFERENCES passageiros(id) 
 );
 
 CREATE INDEX idx_usuarios_email ON usuarios(email);
