@@ -11,13 +11,13 @@ public class BancoDeDados {
     private static final String USUARIO = "postgres";
     private static final String SENHA = "123123";
 
-    static {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Driver PostgreSQL nao encontrado!");
-        }
-    }
+    // static {
+    //     try {
+    //         Class.forName("org.postgresql.Driver");
+    //     } catch (ClassNotFoundException e) {
+    //         System.out.println("Driver PostgreSQL nao encontrado!");
+    //     }
+    // }
 
     public static Connection conectar() {
         try {
@@ -121,7 +121,8 @@ public class BancoDeDados {
             END $$
             """
         };
-
+            //aqui cria um statment (stmt) para conexao com o banco
+            //roda as querys do banco
         Connection conn = null;
         Statement stmt = null;
         try {
